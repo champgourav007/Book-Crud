@@ -27,7 +27,12 @@ namespace BookCRUD.Controllers
         // GET: BookController/Details/5
         public IActionResult Details(int id)
         {
-            return View();
+            var book = _db.Books.Find(id);
+            if(book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
         }
 
         // GET: BookController/Create
@@ -56,37 +61,49 @@ namespace BookCRUD.Controllers
         // GET: BookController/Edit/5
         public IActionResult Edit(int id)
         {
-            return View();
+            var book = _db.Books.Find(id);
+            if(book == null)
+            {
+                return NotFound();
+            }
+            return View(book);
         }
 
         // POST: BookController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit(BookViewModel obj)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                _db.Books.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Details",obj);
             }
-            catch
-            {
-                return View();
-            }
+            return View();
         }
 
         // GET: BookController/Delete/5
         public IActionResult Delete(int id)
         {
-            return View();
+            if(id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var book = _db.Books.Find(id);
+            
+            return View(book);
         }
 
         // POST: BookController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(BookViewModel obj)
         {
             try
             {
+                _db.Books.Remove(obj);
+                _db.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch

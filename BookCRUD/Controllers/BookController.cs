@@ -17,14 +17,14 @@ namespace BookCRUD.Controllers
         }
 
 
-        // GET: BookController
+        // GET: Book
         public IActionResult Index()
         {
             IEnumerable<BookViewModel> Books = _db.Books;
             return View(Books);
         }
 
-        // GET: BookController/Details/5
+        // GET: Book/Details/5
         public IActionResult Details(int id)
         {
             var book = _db.Books.Find(id);
@@ -35,14 +35,14 @@ namespace BookCRUD.Controllers
             return View(book);
         }
 
-        // GET: BookController/Create
+        // GET: Book/Create
         public IActionResult Create()
         {
 
             return View();
         }
 
-        // POST: BookController/Create
+        // POST: Book/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(BookViewModel obj)
@@ -51,6 +51,7 @@ namespace BookCRUD.Controllers
             {
                 _db.Books.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Book is Added Successfully!";
                 return RedirectToAction("Index");
             }
             return View();
@@ -58,18 +59,19 @@ namespace BookCRUD.Controllers
 
         
 
-        // GET: BookController/Edit/5
+        // GET: Book/Edit/5
         public IActionResult Edit(int id)
         {
             var book = _db.Books.Find(id);
             if(book == null)
             {
+                TempData["error"] = "Data Not Found!";
                 return NotFound();
             }
             return View(book);
         }
 
-        // POST: BookController/Edit/5
+        // POST: Book/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(BookViewModel obj)
@@ -78,16 +80,18 @@ namespace BookCRUD.Controllers
             {
                 _db.Books.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Data is Edited Successfully!";
                 return RedirectToAction("Details",obj);
             }
             return View();
         }
 
-        // GET: BookController/Delete/5
+        // GET: Book/Delete/5
         public IActionResult Delete(int id)
         {
             if(id == null || id == 0)
             {
+                TempData["error"] = "Data not Found!";
                 return NotFound();
             }
             var book = _db.Books.Find(id);
@@ -95,7 +99,7 @@ namespace BookCRUD.Controllers
             return View(book);
         }
 
-        // POST: BookController/Delete/5
+        // POST: Book/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(BookViewModel obj)
@@ -104,6 +108,7 @@ namespace BookCRUD.Controllers
             {
                 _db.Books.Remove(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Data is deleted successfully!";
                 return RedirectToAction(nameof(Index));
             }
             catch

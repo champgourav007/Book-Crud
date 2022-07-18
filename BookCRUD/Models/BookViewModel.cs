@@ -14,5 +14,7 @@ namespace BookCRUD.Models
 
         [Required]
         public double Price { get; set; }
+
+        
     }
 }

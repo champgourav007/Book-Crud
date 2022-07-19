@@ -10,10 +10,12 @@ namespace BookCRUD.Controllers
     public class BookController : Controller
     {
         private readonly ApplicationDbContext _db;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public BookController(ApplicationDbContext db)
+        public BookController(ApplicationDbContext db, IWebHostEnvironment webHostEnvironment)
         {
             _db = db;
+            _webHostEnvironment = webHostEnvironment;
         }
 
 
@@ -45,8 +47,12 @@ namespace BookCRUD.Controllers
         // POST: Book/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(BookViewModel obj)
+        public IActionResult Create(BookViewModel obj, IFormFile? file)
         {
+            if(file != null)
+            {
+                obj.Image = SaveImagePath(obj, file);
+            }
             if(ModelState.IsValid)
             {
                 _db.Books.Add(obj);
@@ -57,6 +63,19 @@ namespace BookCRUD.Controllers
             return View();
         }
 
+        private string SaveImagePath(BookViewModel obj, IFormFile file)
+        {
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+            string fileName = Guid.NewGuid().ToString();
+            var uploads = Path.Combine(wwwRootPath, @"Images");
+            var extension = Path.GetExtension(file.FileName);
+            using (var fileStream = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+            {
+                file.CopyTo(fileStream);
+            }
+
+            return @"\Images\" + fileName + extension;
+        }
         
 
         // GET: Book/Edit/5
@@ -66,7 +85,7 @@ namespace BookCRUD.Controllers
             if(book == null)
             {
                 TempData["error"] = "Data Not Found!";
-                return NotFound();
+                return View("Index");
             }
             return View(book);
         }
@@ -74,11 +93,19 @@ namespace BookCRUD.Controllers
         // POST: Book/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(BookViewModel obj)
+        public IActionResult Edit(BookViewModel obj, IFormFile? file)
         {
+            var path = "0";
+            if (file != null)
+            {
+                path = SaveImagePath(obj, file);
+            }
+
             if (ModelState.IsValid)
             {
                 _db.Books.Update(obj);
+                var book = _db.Books.Find(obj.Id);
+                book.Image = path;
                 _db.SaveChanges();
                 TempData["success"] = "Data is Edited Successfully!";
                 return RedirectToAction("Details",obj);
@@ -92,7 +119,7 @@ namespace BookCRUD.Controllers
             if(id == null || id == 0)
             {
                 TempData["error"] = "Data not Found!";
-                return NotFound();
+                return View("Index");
             }
             var book = _db.Books.Find(id);
             

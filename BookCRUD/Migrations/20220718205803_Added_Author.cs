@@ -4,23 +4,23 @@
 
 namespace BookCRUD.Migrations
 {
-    public partial class Update_migration : Migration
+    public partial class Added_Author : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Image",
-                table: "Books");
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
             migrationBuilder.AddColumn<string>(
-                name: "Image",
+                name: "Author",
                 table: "Books",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "Author",
+                table: "Books");
         }
     }
 }

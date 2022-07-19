@@ -12,9 +12,14 @@ namespace BookCRUD.Models
 
         public string Description { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please Enter the Price of the Book")]
         public double Price { get; set; }
 
-        
+        public string? Image { get; set; }
+
+        public DateTime CreatedTime { get; set; } = DateTime.Now;
+
+        [Required(ErrorMessage = "Please Enter the Author of the Book")]
+        public string Author { get; set; }
     }
 }

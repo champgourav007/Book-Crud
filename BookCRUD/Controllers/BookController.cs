@@ -42,8 +42,8 @@ namespace BookCRUD.Controllers
         public IActionResult Details(int id)
         {
             //BookAPIDb book = new BookAPIDb();
-            client.BaseAddress = new Uri(String.Format("https://localhost:7152/api/BookAPI/{0}", id));
-            var response = client.GetAsync("BookAPI");
+            client.BaseAddress = new Uri("https://localhost:7152/api/");
+            var response = client.GetAsync("BookAPI/" + id);
             response.Wait();
             var test = response.Result;
             if (test.IsSuccessStatusCode)
@@ -55,7 +55,8 @@ namespace BookCRUD.Controllers
             }
             else
             {
-                return NotFound();
+                TempData["error"] = "Book not found";
+                return RedirectToAction("Index");
             }
             
         }
@@ -79,7 +80,7 @@ namespace BookCRUD.Controllers
 
 
             client.BaseAddress = new Uri("https://localhost:7152/api/BookAPI");
-            var response = client.PostAsJsonAsync<BookAPIDb>("BookAPI", obj);
+            var response = client.PutAsJsonAsync<BookAPIDb>("BookAPI", obj);
             response.Wait();
 
             var test = response.Result;
@@ -109,70 +110,96 @@ namespace BookCRUD.Controllers
         }
 
 
-        //// GET: Book/Edit/5
-        public IActionResult Edit(int id)
+        // GET: Book/Edit/5
+        public IActionResult Edit(int? id)
         {
-            //var book = _db.Books.Find(id);
-            //if (book == null)
-            //{
-            //    TempData["error"] = "Data Not Found!";
-            //    return View("Index");
-            //}
-            //return View(book);
+            if (id == null)
+            {
+                TempData["error"] = "Data Not Found!";
+                return View("Index");
+            }
+            client.BaseAddress = new Uri("https://localhost:7152/api/");
+            var response = client.GetAsync("BookAPI/" + id);
+            response.Wait();
+            var test = response.Result;
+            if (test.IsSuccessStatusCode)
+            {
+                var display = test.Content.ReadAsAsync<BookAPIDb>();
+                display.Wait();
+                var book = display.Result;
+                return View(book);
+            }
+            return NotFound();
         }
 
         // POST: Book/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Edit(BookViewModel obj, IFormFile? file)
-        //{
-        //    var path = "0";
-        //    if (file != null)
-        //    {
-        //        path = SaveImagePath(obj, file);
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(BookAPIDb obj, IFormFile? file)
+        {
+            if (file != null)
+            {
+                obj.Image = SaveImagePath(file);
+            }
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        _db.Books.Update(obj);
-        //        var book = _db.Books.Find(obj.Id);
-        //        book.Image = path;
-        //        _db.SaveChanges();
-        //        TempData["success"] = "Data is Edited Successfully!";
-        //        return RedirectToAction("Details",obj);
-        //    }
-        //    return View();
-        //}
+            client.BaseAddress = new Uri("https://localhost:7152/api/BookAPI");
+            var response = client.PutAsJsonAsync<BookAPIDb>("BookAPI", obj);
+            response.Wait();
+
+            var test = response.Result;
+            if (test.IsSuccessStatusCode)
+            {
+                int Id = obj.Id;
+                TempData["success"] = "Data is Successfully Updated";
+                return RedirectToAction("Details", new { id = Id});
+
+            }
+
+            TempData["error"] = "Some Error Occured Please Re-Enter the Data";
+            return View();
+        }
 
         // GET: Book/Delete/5
-        //public IActionResult Delete(int id)
-        //{
-        //    if(id == null || id == 0)
-        //    {
-        //        TempData["error"] = "Data not Found!";
-        //        return View("Index");
-        //    }
-        //    var book = _db.Books.Find(id);
+        public IActionResult Delete(int id)
+        {
+            client.BaseAddress = new Uri("https://localhost:7152/api/");
+            var response = client.GetAsync("BookAPI/" + id);
+            response.Wait();
+            var test = response.Result;
+            if (test.IsSuccessStatusCode)
+            {
+                var display = test.Content.ReadAsAsync<BookAPIDb>();
+                display.Wait();
+                var book = display.Result;
+                return View(book);
+            }
 
-        //    return View(book);
-        //}
+            return NotFound();
+        }
 
         // POST: Book/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Delete(BookViewModel obj)
-        //{
-        //    try
-        //    {
-        //        _db.Books.Remove(obj);
-        //        _db.SaveChanges();
-        //        TempData["success"] = "Data is deleted successfully!";
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(BookAPIDb obj)
+        {
+            try
+            {
+                client.BaseAddress = new Uri("https://localhost:7152/api/");
+                var response = client.DeleteAsync("BookAPI/" + obj.Id);
+                response.Wait();
+                var test = response.Result;
+                if (test.IsSuccessStatusCode)
+                {
+                    TempData["success"] = "Data is Deleted";
+                     return RedirectToAction(nameof(Index));
+                }
+                TempData["error"] = "Data is not Deleted";
+                return View();
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

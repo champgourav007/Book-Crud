@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GQ893UTQm3POYMgIxnGDlsbBGQs8pk693FydirJU7NQ=",
+  "Hash": "GarUYh+iyHQMIbEEUQsepjmP+4a408RD0Xb9rEe4nhI=",
   "Source": "BookCRUD",
   "BasePath": "_content/BookCRUD",
   "Mode": "Default",
@@ -129,6 +129,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\0af83aa8-3b4a-4425-8ac2-0bfa322fb843.png"
+    },
+    {
+      "Identity": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\Images\\0d801eb4-6a05-4166-b6b5-25f543142680.png",
+      "SourceId": "BookCRUD",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\",
+      "BasePath": "_content/BookCRUD",
+      "RelativePath": "Images/0d801eb4-6a05-4166-b6b5-25f543142680.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\0d801eb4-6a05-4166-b6b5-25f543142680.png"
     },
     {
       "Identity": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\Images\\1163de89-3776-4d57-9a1c-46b7c1ce9e81.jpg",
@@ -692,6 +709,40 @@
       "OriginalItemSpec": "wwwroot\\Images\\92deb9e2-65da-4fe4-837b-a1879e502a76.jfif"
     },
     {
+      "Identity": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\Images\\96d0e366-d6b8-4acc-bdcf-093bde92912a.png",
+      "SourceId": "BookCRUD",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\",
+      "BasePath": "_content/BookCRUD",
+      "RelativePath": "Images/96d0e366-d6b8-4acc-bdcf-093bde92912a.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\96d0e366-d6b8-4acc-bdcf-093bde92912a.png"
+    },
+    {
+      "Identity": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\Images\\9acae381-6c1c-4424-b5e3-1935888bad2d.png",
+      "SourceId": "BookCRUD",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\",
+      "BasePath": "_content/BookCRUD",
+      "RelativePath": "Images/9acae381-6c1c-4424-b5e3-1935888bad2d.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\9acae381-6c1c-4424-b5e3-1935888bad2d.png"
+    },
+    {
       "Identity": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\Images\\9dac92f8-729a-460b-aae5-c1e661a99c03.jfif",
       "SourceId": "BookCRUD",
       "SourceType": "Discovered",
@@ -724,6 +775,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\9eebc791-c8c2-40f7-9278-55ea8bd2be9e.png"
+    },
+    {
+      "Identity": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\Images\\a6578b77-9f61-4e2a-a379-fbb99c4328a3.png",
+      "SourceId": "BookCRUD",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\",
+      "BasePath": "_content/BookCRUD",
+      "RelativePath": "Images/a6578b77-9f61-4e2a-a379-fbb99c4328a3.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\a6578b77-9f61-4e2a-a379-fbb99c4328a3.png"
     },
     {
       "Identity": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\Images\\aa4e2cc4-7eb2-46c9-9e98-9d1a3b2be2e9.png",
@@ -843,6 +911,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\c22a8e1f-76dd-4f10-a7f1-305e7164bfdf.png"
+    },
+    {
+      "Identity": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\Images\\c3ca9f8b-54c5-434d-8f55-08d9036a2426.png",
+      "SourceId": "BookCRUD",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\",
+      "BasePath": "_content/BookCRUD",
+      "RelativePath": "Images/c3ca9f8b-54c5-434d-8f55-08d9036a2426.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\c3ca9f8b-54c5-434d-8f55-08d9036a2426.png"
     },
     {
       "Identity": "D:\\Projects\\BookCRUD\\BookCRUD\\wwwroot\\Images\\c4aa6347-9fc1-4147-b1f7-901202a41110.jfif",

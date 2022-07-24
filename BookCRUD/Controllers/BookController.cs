@@ -185,13 +185,29 @@ namespace BookCRUD.Controllers
             try
             {
                 client.BaseAddress = new Uri("https://localhost:7152/api/");
+                var bookResponse = client.GetAsync("BookAPI/" + obj.Id);
+                bookResponse.Wait();
                 var response = client.DeleteAsync("BookAPI/" + obj.Id);
                 response.Wait();
                 var test = response.Result;
-                if (test.IsSuccessStatusCode)
+                var testBook = bookResponse.Result;
+                if (test.IsSuccessStatusCode && testBook.IsSuccessStatusCode)
                 {
-                    TempData["success"] = "Data is Deleted";
-                     return RedirectToAction(nameof(Index));
+                    var display = testBook.Content.ReadAsAsync<BookAPIDb>();
+                    display.Wait();
+                    var path = display.Result.Image;
+
+                    bool isDone = DeleteImage(path);
+                    if(isDone)
+                    {
+                        TempData["success"] = "Data is Deleted";
+                         return RedirectToAction(nameof(Index));
+                    }
+                    else
+                    {
+                        TempData["error"] = "Image is not Deleted";
+                        return RedirectToAction(nameof(Index));
+                    }
                 }
                 TempData["error"] = "Data is not Deleted";
                 return View();
@@ -199,6 +215,26 @@ namespace BookCRUD.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        private bool DeleteImage(string path)
+        {
+            try
+            {
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                var file = wwwRootPath + path;
+                FileInfo Image = new FileInfo(file);
+                if (Image.Exists)
+                {
+                    Image.Delete();
+                    return (true);
+                }
+                return (false);
+            }
+            catch
+            {
+                return (false);
             }
         }
     }

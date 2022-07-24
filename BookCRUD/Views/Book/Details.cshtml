@@ -1,4 +1,4 @@
-﻿@model BookViewModel
+﻿@model BookAPI.Models.BookAPIDb
 @{
     ViewData["Title"] = "Details";
 }
@@ -27,6 +27,6 @@
     <a asp-controller="Book" asp-action="Index" class="btn btn-dark">Back</a>
   </div>
   <div class="card-footer text-muted">
-    Uploaded On : @Model.CreatedTime.ToShortDateString()
+    Uploaded On : @Model.createdTime.ToShortDateString()
   </div>
 </div>

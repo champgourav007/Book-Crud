@@ -1112,3 +1112,12 @@ D:\Projects\BookCRUD\BookCRUD\obj\Debug\net6.0\scopedcss\projectbundle\BookCRUD.
 D:\Projects\BookCRUD\BookCRUD\obj\Debug\net6.0\BookCRUD.csproj.CopyComplete
 D:\Projects\BookCRUD\BookCRUD\obj\Debug\net6.0\BookCRUD.genruntimeconfig.cache
 D:\Projects\BookCRUD\BookCRUD\obj\Debug\net6.0\ref\BookCRUD.dll
+D:\Projects\BookCRUD\BookCRUD\bin\Debug\net6.0\BookAPI.deps.json
+D:\Projects\BookCRUD\BookCRUD\bin\Debug\net6.0\BookAPI.runtimeconfig.json
+D:\Projects\BookCRUD\BookCRUD\bin\Debug\net6.0\BookAPI.exe
+D:\Projects\BookCRUD\BookCRUD\bin\Debug\net6.0\Microsoft.OpenApi.dll
+D:\Projects\BookCRUD\BookCRUD\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Projects\BookCRUD\BookCRUD\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Projects\BookCRUD\BookCRUD\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Projects\BookCRUD\BookCRUD\bin\Debug\net6.0\BookAPI.dll
+D:\Projects\BookCRUD\BookCRUD\bin\Debug\net6.0\BookAPI.pdb
